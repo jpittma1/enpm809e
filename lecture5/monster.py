@@ -1,9 +1,9 @@
-from multiprocessing.sharedctypes import Value
 
 
 class Monster(object):
     weapons = ["sword", "axe", "spear"] #class attribute
     
+    # def __init__(self, name="Monster", hp=100, life=1, faction = None, weapon=None):
     def __init__(self, name="Monster", hp=100, life=1, weapon=None):
         if weapon is not None:
             if weapon not in self.weapons:
@@ -11,16 +11,22 @@ class Monster(object):
             else:
                 self.weapon = weapon
         # self.weapons = ["sword", "axe", "spear"]    #instance attribute so not-editable by outside world
+        
         self.name = name
         self.hp = hp
         self.life = life
         self.initial_hp = hp
         self.is_alive = True
+    #     self.f()
+    #     self.faction = faction
+        
+    # def f(self):
+    #     self.hello = "hello"
 
     def take_damage(self, damage):
         if self.hp > 0:
             self.hp -= damage
-            print(f"{self.name} took {damage} damage points")
+            print(f"{self.name} took {damage} damage points, and has {self.hp} hp left")
 
         if self.hp <= 0:
             self.life -= 1
@@ -36,19 +42,19 @@ class Monster(object):
         return not self.is_alive
     
     def __str__(self):
-        return f"Name: {self.name}, Hp: {self.hp}, Life: {self.life}, Weapon: {self.weapon}"
-    
-    def __eq__(self, other)-> bool:
-        return self.name == other.name
-    
-    def __le__(self, other) -> bool:
-        return self.hp <= other.hp
+        return f"Name: {self.name}, Hp: {self.hp}, Life: {self.life}"
     
     def __add__(self, num):
         self.life = self.life + num
 
-    def __gt__(self, other) -> bool:
-        return self.hp > other.hp
+    def __gt__(self, other):
+        return self.life > other.life
+    
+    def __le__(self, other):
+        return self.life <= other.life
+    
+    def __eq__(self, other):
+        return self.name == other.name
     
     def __sub__(self, num):
         self.life = self.life - num
@@ -114,6 +120,7 @@ def main():
     ##---Added overrides to eq, add, le, gt---###
     vlad = Monster("Vlad")
     frankie = Monster("Frankie")
+    
     print(f"Vlad life: {vlad.life}")
     vlad + 1
     print(f"Vlad life: {vlad.life}")
@@ -122,6 +129,18 @@ def main():
     
     print ("Is Vlad life > Frankie Life? ", vlad > frankie)
     print ("Is Vlad life <= Frankie Life? ", vlad <= frankie)
+    
+    # while vlad.is_alive:
+    #     vlad.take_damage(10)
+        
+    ####Trying out faction and stuff....
+    # monkey = Monster("Monkey", faction = "monkey")
+    # print(monkey.name, monkey.faction)
+    # print(monkey)
+
+    #Bad encapsulation
+    # vlad.hp = 6000
+    # print(vlad)
 
 if __name__ == "__main__":
     main()

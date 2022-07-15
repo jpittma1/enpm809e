@@ -18,11 +18,12 @@ class Monster():
         self._initial_hp = hp
         self._is_alive = True
         self._weapon = Weapon(None, None, None)
-        
+
         # weapon = Weapon(weapon) #'name', 'weapon_type', and 'power'
-        
+ 
     def __str__(self):
-        return f'Name: {self._name}, HP: {self._hp}, Life: {self._life}, Weapon: {self._weapon}'
+        return f'Name: {self._name}, HP: {self._hp}, Life: {self._life}'
+        # return f'Name: {self._name}, HP: {self._hp}, Life: {self._life}, Weapon: {self._weapon}'
 
     @property
     def name(self):
@@ -36,6 +37,10 @@ class Monster():
     @property
     def hp(self):
         return self._hp
+    
+    @hp.setter
+    def hp(self, other):
+        raise Exception("You cannot set the HP!!")
 
     @property
     def is_alive(self):
@@ -83,6 +88,7 @@ def main():
     # print (vlad)
     # print (hairy)
     # vlad.hp = -10
+    drake.hp = 200
 
 if __name__ == "__main__":
     main()

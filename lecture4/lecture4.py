@@ -477,17 +477,17 @@ from functools import reduce
 ##############
 #  SLIDE 50
 ##############
-nato_phonetics = ["alfa", "zulu", "uniform", "india"]
-# print(sorted(nato_phonetics))  # ['alfa', 'india', 'uniform', 'zulu']
+# nato_phonetics = ["alfa", "zulu", "uniform", "india"]
+# # print(sorted(nato_phonetics))  # ['alfa', 'india', 'uniform', 'zulu']
 
-# print(sorted(nato_phonetics, key=len)  # ['alfa', 'zulu', 'india', 'uniform']
+# # print(sorted(nato_phonetics, key=len)  # ['alfa', 'zulu', 'india', 'uniform']
 
-# print(sorted(nato_phonetics, reverse=True)) # ['zulu', 'uniform', 'india', 'alfa']
+# # print(sorted(nato_phonetics, reverse=True)) # ['zulu', 'uniform', 'india', 'alfa']
 
-def reverse_len(input_list): return -len(input_list)
-print(sorted(nato_phonetics, key=reverse_len))  #['uniform', 'india', 'alfa', 'zulu']
+# def reverse_len(input_list): return -len(input_list)
+# print(sorted(nato_phonetics, key=reverse_len))  #['uniform', 'india', 'alfa', 'zulu']
     
-# print (reverse_len(nato_phonetics))
+# # print (reverse_len(nato_phonetics))
 # for item in new_list
 
 ##############
@@ -520,7 +520,7 @@ print(sorted(nato_phonetics, key=reverse_len))  #['uniform', 'india', 'alfa', 'z
 
 ##############
 #  SLIDE 56
-##############
+#############
 # print((lambda x: x * 2)(3)) # 6
 
 # double = lambda x: x * 2
@@ -550,8 +550,21 @@ print(sorted(nato_phonetics, key=reverse_len))  #['uniform', 'india', 'alfa', 'z
 # dis.dis(add)
 
 ##############
+#  SLIDE 60
+##############
+
+# print((lambda x, y, z: x + y + z)(1, 2, 3)) #6
+
+# print((lambda x, y, z=3: x + y + z)(1, 2))  #6
+
+# print((lambda *args: sum(args))(1,2,3)) #6
+
+# print((lambda **kwargs: sum(kwargs.values()))(one=1, two=2))    #3
+
+##############
 #  SLIDE 62
 ##############
+'''Filters an iterable based on condition.'''
 # sequence = [1, 24, 8, 7, 5, 4, 3, 11, 0, 7]
 
 
@@ -561,22 +574,24 @@ print(sorted(nato_phonetics, key=reverse_len))  #['uniform', 'india', 'alfa', 'z
 
 
 # filtered_answer = filter(lambda x: x > 4, sequence)
-# print(type(filtered_answer))
+# print(type(filtered_answer))    #<class 'filter'>
 # print(list(filtered_answer))  # [24, 8, 7, 5, 11, 7]
 
 ##############
 #  SLIDE 63
 ##############
+'''Map goes through each item in a an iterable.'''
+
 # sequence = [2, 2, 3, 4, 24]
 # squared_result = map(lambda x: x*x, sequence)
-# print(type(squared_result))
+# print(type(squared_result)) #<class 'map'>
 # print(list(squared_result)) # [4, 4, 9, 16, 576]
-
 
 ##############
 #  SLIDE 64
 ##############
 # sequence = [1, 2, 3, 4]
 # sum_result = reduce(lambda x, y: x+y, sequence)
-# print(type(sum_result))
+# #(((1+2)+3)+4) = 10
+# print(type(sum_result)) #<class 'int'>
 # print(sum_result) # 10
